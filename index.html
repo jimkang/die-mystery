@@ -64,6 +64,9 @@ function s(sel) {
 function set(e, h) {
   e.innerHTML = h;
 }
+function add(e, h) {
+  e.innerHTML = e.innerHTML + h;
+}
 function cPt(c, r, a) {
   return [c[0]+r*Math.cos(a), c[1]+r*Math.sin(a)];
 }
@@ -74,9 +77,9 @@ function cSVG(r, c, fill = '#444', stroke = 'none') {
 var steps = [
   { l: 2, f: (d) => { set(s('#a'), cSVG(1, ctr)); } },
   { l: 2, f: (d) => { set(s('#b'), cSVG(outerR, ctr, 'none', '#444')); } },
-  { l: 2, f: (d) => {
-    set(s('#c'), cps.map(c => cSVG(1, c)).join(' '));
-  } },
+  { l: 2, f() { set(s('#c'), cSVG(1, cps[0])); } },
+  { l: 0.5, f() { add(s('#c'), cSVG(1, cps[1])); } },
+  { l: 0.5, f() { add(s('#c'), cSVG(1, cps[2])); } },
 ];
 
 function run(step, i) {
