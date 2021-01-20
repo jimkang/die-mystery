@@ -41,20 +41,24 @@ https://taper.badquart.to/6/title_of_your_work.html
 </header> <!-- The poem that follows, up to </body>, is at most 2kb -->
 
 <svg width="90vmin" height="90vmin" viewBox="0 0 100 100">
-  <g id="c"></g>
-  <g id="b"></g>
-  <g id="a"></g>
+  <g id="d"/>
+  <g id="c"/>
+  <g id="b"/>
+  <g id="a"/>
 </svg>
 
 <script>
 const outerR = 41 + r(10);
 var ctr = [50, 50];
 const tp = 2 * Math.PI;
-var cps = [
-  cPt(ctr, outerR, 0),
-  cPt(ctr, outerR, tp/3),
-  cPt(ctr, outerR, 2*tp/3)
+var dotAs = [
+  -tp/32+r(100)/100*tp/16,
+  .3*tp+r(100)/100*tp/16,
+  .64*tp+r(100)/100*tp/16
 ];
+var opAs = dotAs.map(a => a + Math.PI);
+var cps = dotAs.concat(opAs).map(a => cPt(ctr, outerR, a));
+console.log(cps);
 function r(m) {
   return ~~(Math.random() * m);
 }
@@ -72,14 +76,18 @@ function cPt(c, r, a) {
 }
 function cSVG(r, c, fill = '#444', stroke = 'none') {
    return `<circle r="${r}" cx="${c[0]}" cy="${c[1]}" fill="${fill}" stroke="${stroke}"/>`;
-
 }
+function lSVG(s, e, stroke='#444') {
+  return `<line x1="${s[0]}" y1="${s[1]}" x2="${e[0]}" y2="${e[1]}"/>`;
+}
+
 var steps = [
-  { l: 2, f: (d) => { set(s('#a'), cSVG(1, ctr)); } },
-  { l: 2, f: (d) => { set(s('#b'), cSVG(outerR, ctr, 'none', '#444')); } },
-  { l: 2, f() { set(s('#c'), cSVG(1, cps[0])); } },
-  { l: 0.5, f() { add(s('#c'), cSVG(1, cps[1])); } },
-  { l: 0.5, f() { add(s('#c'), cSVG(1, cps[2])); } },
+  { l: 0, f: (d) => { set(s('#a'), cSVG(1, ctr)); } },
+  { l: 0, f: (d) => { set(s('#b'), cSVG(outerR, ctr, 'none', '#444')); } },
+  { l: 0.3, f() { set(s('#c'), cSVG(1, cps[0])); } },
+  { l: 0.3, f() { add(s('#c'), cSVG(1, cps[1])); } },
+  { l: 0.3, f() { add(s('#c'), cSVG(1, cps[2])); } },
+  //{ l: 2, f() { set(s('#d'), cSVG(1, cps[2])); } },
 ];
 
 function run(step, i) {
