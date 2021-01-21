@@ -93,14 +93,11 @@ var steps=[
 {l:0.3,f(){h(s('#f'),pSVG(cps))}},
 ]
 function run(step, i){
-  if (step.f) step.f()
-  if (step.a) t(ta,step.a)
-  if (step.b) t(tb,step.b)
-
-  var next=steps[i + 1]
-  if(next){
-    setTimeout(()=>run(next,i+1),step.l*1000)
-  }
+if (step.f) step.f()
+if (step.a) t(ta,step.a)
+if (step.b) t(tb,step.b)
+var next=steps[i + 1]
+if(next) setTimeout(()=>run(next,i+1),step.l*1000)
 }
 run(steps[0], 0)
 </script>
