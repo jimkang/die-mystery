@@ -59,36 +59,38 @@ https://taper.badquart.to/6/title_of_your_work.html
 <div id="ta"></div>
 <div id="tb"></div>
 <script>
-var r=m=>~~(Math.random()*m);
-var s=t=>document.querySelector(t)
-var t=(e,s)=>e.textContent=s
-var h=(e,h)=>e.innerHTML=e.innerHTML+h
-var cPt=(c,r,a)=>[c[0]+r*Math.cos(a), c[1]+r*Math.sin(a)]
-var c=(r,c)=>`<circle r="${r}"cx="${c[0]}"cy="${c[1]}"/>`
-var ln=(s,e)=>`<line x1="${s[0]}"y1="${s[1]}"x2="${e[0]}"y2="${e[1]}"/>`
-var bR=39+r(10)
-var ctr=[50,50]
-var pi=Math.PI
-var tp=2*pi
-var ias=[
+var r=m=>~~(Math.random()*m),
+s=t=>document.querySelector(t),
+t=(e,s)=>e.textContent=s,
+h=(e,h)=>e.innerHTML=e.innerHTML+h,
+cPt=(c,r,a)=>[c[0]+r*Math.cos(a), c[1]+r*Math.sin(a)],
+c=(r,c)=>`<circle r="${r}"cx="${c[0]}"cy="${c[1]}"/>`,
+ln=(s,e)=>`<line x1="${s[0]}"y1="${s[1]}"x2="${e[0]}"y2="${e[1]}"/>`,
+bR=39+r(10),
+ctr=[50,50],
+pi=Math.PI,
+tp=2*pi,
+ias=[
   -tp/32+r(100)/100*tp/16,
   .3*tp+r(100)/100*tp/16,
   .64*tp+r(100)/100*tp/16
-]
-var as=[ias[0],ias[2]+pi,ias[1],ias[0]+pi,ias[2],ias[1]+pi]
-var cps=as.map(a=>cPt(ctr,bR,a))
-var ds=[cPt(ctr,bR/2,as[1]),cPt(ctr,bR/3,as[3]),cPt(ctr,2*bR/3,as[3]),cPt(ctr,bR/4,as[5]),cPt(ctr,bR/2,as[5]),cPt(ctr,3*bR/4,as[5])]
-var ta=s('#ta')
-var tb=s('#tb')
-var l=[
+],
+as=[ias[0],ias[2]+pi,ias[1],ias[0]+pi,ias[2],ias[1]+pi],
+cps=as.map(a=>cPt(ctr,bR,a)),
+ds=[cPt(ctr,bR/2,as[1]),cPt(ctr,bR/3,as[3]),cPt(ctr,2*bR/3,as[3]),cPt(ctr,bR/4,as[5]),cPt(ctr,bR/2,as[5]),cPt(ctr,3*bR/4,as[5])],
+ta=s('#ta'),
+tb=s('#tb'),
+a=s('#a'),
+b=s('#b'),
+l=[
 {b:"I was reading about a 'die' object"},
 {a:"Huh"},
-{b:"The object rotated then stopped; final position indicated a selected number"},
+{b:"People rotated it; when it stopped, it selected number"},
 {a:"How do you make a die"},
-{f(){h(s('#b'),c(1,ctr))},b:"Well, looks to me…you draw a point"},
-{f(){h(s('#a'),c(bR,ctr))},b:"And a circle around it"},
-{f(){h(s('#b'),c(1,cps[0]))},b:"You put a dot on the circle"},
-{f(){h(s('#b'),c(1,cps[2])+c(1,cps[4]))},b:"Two more dots"},
+{f(){h(b,c(1,ctr))},b:"Well, looks to me…you draw a point"},
+{f(){h(a,c(bR,ctr))},b:"And a circle around it"},
+{f(){h(b,c(1,cps[0]))},b:"You put a dot on the circle"},
+{f(){h(b,c(1,cps[2])+c(1,cps[4]))},b:"Two more dots"},
 {f(){h(s('#d'),ln(ctr,cps[0]))},b:"Make lines to the dots"},
 {f(){h(s('#d'),ln(ctr,cps[2])+ln(ctr,cps[4]))},}, {a:"Is this a kind of wheel"},
 {b:"No; stretch the lines out"},
@@ -106,8 +108,8 @@ var l=[
 {b:"Then count the dots there"},
 {a:"…I see"},
 {a:"[END]"},
-]
-var run=(n, i)=>{
+],
+run=(n, i)=>{
 if(n.f)n.f()
 t(ta,n.a)
 t(tb,n.b)
