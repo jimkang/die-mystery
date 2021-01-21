@@ -41,8 +41,8 @@ https://taper.badquart.to/6/title_of_your_work.html
 </header> <!-- The poem that follows, up to </body>, is at most 2kb -->
 
 <style>
-circle{fill:#aaa}
-#b *{stroke:#bbb;fill:hsla(0,0%,0%,0.1)}
+#a *{stroke:#bbb;fill:#ddd}
+#b *{fill:#999}
 #e *{stroke:hsla(0,0%,0%,0.1)}
 #f *{stroke:#222;fill:none}
 #ta{color:red}
@@ -51,7 +51,6 @@ circle{fill:#aaa}
 <svg width="60vmin" height="60vmin" viewBox="0 0 100 100">
   <g id="a"/>
   <g id="b"/>
-  <g id="c"/>
   <g id="d"/>
   <g id="e"/>
   <g id="f"/>
@@ -85,16 +84,19 @@ var l=[
 {l:0,a:"Huh"},
 {l:0,b:"The object rotated then stopped; final position indicated a selected number"},
 {l:0,a:"How do you make a die"},
-{l:0,f(){h(s('#a'),c(1,ctr))},b:"Well, looks to me…you draw a point"},
-{l:0,f(){h(s('#b'),c(bR,ctr))},b:"And a circle around it"},
-{l:0,f(){h(s('#c'),c(1,cps[0]))},b:"You put a dot on the circle"},
-{l:0,f(){h(s('#c'),c(1,cps[2])+c(1,cps[4]))},b:"Two more dots"},
+{l:2,f(){h(s('#b'),c(1,ctr))},b:"Well, looks to me…you draw a point"},
+{l:2,f(){h(s('#a'),c(bR,ctr))},b:"And a circle around it"},
+{l:2,f(){h(s('#b'),c(1,cps[0]))},b:"You put a dot on the circle"},
+{l:2,f(){h(s('#b'),c(1,cps[2])+c(1,cps[4]))},b:"Two more dots"},
 {l:0,f(){h(s('#d'),ln(ctr,cps[0]))},b:"Make lines to the dots"},
 {l:0,f(){h(s('#d'),ln(ctr,cps[2])+ln(ctr,cps[4]))},}, {l:2,a:"Is this a kind of wheel"},
 {l:0,b:"No; stretch the lines out"},
 {l:0,f(){h(s('#e'),ln(ctr,cps[1])+ln(ctr,cps[3])+ln(ctr,cps[5]))},a:"OK"},
 {l:0,f(){h(s('#f'),`<polygon points="${cps.map(p=>p.join(',')).join(' ')}"/>`)},b:"Then connect the things that hit the circle to each other"},
 {l:0,f(){h(s('#f'),ds.map(p=>c(3,p)))},b:"Circles go into the spaces"},
+{l:0,a:"Aesthetic"},
+{l:0,a:"So how does it pick a number"},
+{l:0,b:"Uhh let's try rotating it"},
 ]
 function run(n, i){
 if(n.f)n.f()
