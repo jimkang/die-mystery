@@ -61,7 +61,7 @@ circle{fill:#aaa}
 var r=m=>~~(Math.random()*m);
 var s=t=>document.querySelector(t)
 var t=(e,s)=>e.textContent=s
-var add=(e,h)=>e.innerHTML=e.innerHTML+h
+var h=(e,h)=>e.innerHTML=e.innerHTML+h
 var cPt=(c,r,a)=>[c[0]+r*Math.cos(a), c[1]+r*Math.sin(a)]
 var cSVG=(r,c,fill='#444',stroke='none')=>`<circle r="${r}" cx="${c[0]}" cy="${c[1]}" fill="${fill}" stroke="${stroke}"/>`
 var lSVG=(s,e,stroke='#444')=>`<line x1="${s[0]}" y1="${s[1]}" x2="${e[0]}" y2="${e[1]}" stroke="${stroke}"/>`
@@ -82,15 +82,15 @@ var tb=s('#tb');
 var steps=[
 {l:2,a:"What's going on?"},
 {l:2,b:"I'm going to make a die."},
-{l:0,f(){add(s('#a'),cSVG(1,ctr));}},
-{l:0,f(){add(s('#b'),cSVG(bR,ctr));}},
-{l:0.3,f(){add(s('#c'),cSVG(1,cps[0]));}},
-{l:0.3,f(){add(s('#c'),cSVG(1,cps[2]));}},
-{l:0.3,f(){add(s('#c'),cSVG(1,cps[4]));}},
-{l:2,f(){add(s('#d'),lSVG(ctr,cps[0]));}},
-{l:0.3,f(){add(s('#d'),lSVG(ctr,cps[2])+lSVG(ctr,cps[4]));}},
-{l:0.3,f(){add(s('#e'),lSVG(ctr,cps[1])+lSVG(ctr,cps[3])+lSVG(ctr,cps[5]));}},
-{l:0.3,f(){add(s('#f'),pSVG(cps));}},
+{l:0,f(){h(s('#a'),cSVG(1,ctr));}},
+{l:0,f(){h(s('#b'),cSVG(bR,ctr));}},
+{l:0.3,f(){h(s('#c'),cSVG(1,cps[0]));}},
+{l:0.3,f(){h(s('#c'),cSVG(1,cps[2]));}},
+{l:0.3,f(){h(s('#c'),cSVG(1,cps[4]));}},
+{l:2,f(){h(s('#d'),lSVG(ctr,cps[0]));}},
+{l:0.3,f(){h(s('#d'),lSVG(ctr,cps[2])+lSVG(ctr,cps[4]));}},
+{l:0.3,f(){h(s('#e'),lSVG(ctr,cps[1])+lSVG(ctr,cps[3])+lSVG(ctr,cps[5]));}},
+{l:0.3,f(){h(s('#f'),pSVG(cps));}},
 ];
 
 function run(step, i){
