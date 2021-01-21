@@ -42,8 +42,9 @@ https://taper.badquart.to/6/title_of_your_work.html
 
 <style>
 circle{fill:#aaa}
-#b *{fill:none;stroke:#bbb}
+#b *{stroke:#bbb;fill:hsla(0,0%,0%,0.1)}
 #e *{stroke:hsla(0,0%,0%,0.1)}
+#f *{stroke:#222;fill:none}
 #ta{color:red}
 #tb{color:blue}
 </style>
@@ -63,9 +64,8 @@ var s=t=>document.querySelector(t)
 var t=(e,s)=>e.textContent=s
 var h=(e,h)=>e.innerHTML=e.innerHTML+h
 var cPt=(c,r,a)=>[c[0]+r*Math.cos(a), c[1]+r*Math.sin(a)]
-var cSVG=(r,c,fill='#444',stroke='none')=>`<circle r="${r}" cx="${c[0]}" cy="${c[1]}" fill="${fill}" stroke="${stroke}"/>`
-var lSVG=(s,e,stroke='#444')=>`<line x1="${s[0]}" y1="${s[1]}" x2="${e[0]}" y2="${e[1]}" stroke="${stroke}"/>`
-var pSVG=(ps,stroke='#222')=>`<polygon points="${ps.map(p=>p.join(',')).join(' ')}" stroke="${stroke}" fill="none"/>`
+var c=(r,c)=>`<circle r="${r}" cx="${c[0]}" cy="${c[1]}"/>`
+var ln=(s,e,stroke='#444')=>`<line x1="${s[0]}" y1="${s[1]}" x2="${e[0]}" y2="${e[1]}" stroke="${stroke}"/>`
 const bR=39+r(10)
 var ctr=[50,50]
 const pi=Math.PI
@@ -86,15 +86,15 @@ var l=[
 {l:2,a:"Huh"},
 {l:2,b:"The object rotated then stopped; final position indicated a selected number"},
 {l:2,a:"How do you make a die"},
-{l:1,f(){h(s('#a'),cSVG(1,ctr))},b:"I think you make a point"},
-{l:1,f(){h(s('#b'),cSVG(bR,ctr))},b:"And a circle around it"},
-{l:3,f(){h(s('#c'),cSVG(1,cps[0]))},b:"You put a dot on the circle"},
-{l:3,f(){h(s('#c'),cSVG(1,cps[2])+cSVG(1,cps[4]))},b:"Two more dots"},
-{l:2,f(){h(s('#d'),lSVG(ctr,cps[0]))},b:"Make lines to the dots"},
-{l:3,f(){h(s('#d'),lSVG(ctr,cps[2])+lSVG(ctr,cps[4]))},}, {l:2,a:"Is this a kind of wheel"},
+{l:1,f(){h(s('#a'),c(1,ctr))},b:"I think you make a point"},
+{l:1,f(){h(s('#b'),c(bR,ctr))},b:"And a circle around it"},
+{l:3,f(){h(s('#c'),c(1,cps[0]))},b:"You put a dot on the circle"},
+{l:3,f(){h(s('#c'),c(1,cps[2])+c(1,cps[4]))},b:"Two more dots"},
+{l:2,f(){h(s('#d'),ln(ctr,cps[0]))},b:"Make lines to the dots"},
+{l:3,f(){h(s('#d'),ln(ctr,cps[2])+ln(ctr,cps[4]))},}, {l:2,a:"Is this a kind of wheel"},
 {l:3,b:"No; stretch the lines out"},
-{l:3,f(){h(s('#e'),lSVG(ctr,cps[1])+lSVG(ctr,cps[3])+lSVG(ctr,cps[5]))},a:"OK"},
-{l:3,f(){h(s('#f'),pSVG(cps))},b:"Then connect the dots to each other"},
+{l:3,f(){h(s('#e'),ln(ctr,cps[1])+ln(ctr,cps[3])+ln(ctr,cps[5]))},a:"OK"},
+{l:3,f(){h(s('#f'),`<polygon points="${cps.map(p=>p.join(',')).join(' ')}"/>`)},b:"Then connect the things that hit the circle to each other"},
 ]
 function run(n, i){
 if(n.f)n.f()
