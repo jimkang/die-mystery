@@ -80,10 +80,11 @@ var cps=as.map(a => cPt(ctr, bR, a))
 var ta=s('#ta')
 var tb=s('#tb')
 var steps=[
-{l:2,a:"What's going on?"},
 {l:2,b:"I'm going to make a die."},
 {l:2,a:"Making death?!"},
-{l:2,b:"No, a die is on object I read about. Humans used them to pick numbers."},
+{l:2,b:"No, a die is an object I read about. Humans used them to pick numbers."},
+{l:2,a:"Huh"},
+{l:2,b:"The object rotated, then it stopped. The stopping position indicated the selection."},
 {l:0,f(){h(s('#a'),cSVG(1,ctr))}},
 {l:0,f(){h(s('#b'),cSVG(bR,ctr))}},
 {l:0.3,f(){h(s('#c'),cSVG(1,cps[0]))}},
@@ -96,8 +97,8 @@ var steps=[
 ]
 function run(step, i){
 if (step.f) step.f()
-if (step.a) t(ta,step.a)
-if (step.b) t(tb,step.b)
+t(ta,step.a)
+t(tb,step.b)
 var next=steps[i + 1]
 if(next) setTimeout(()=>run(next,i+1),step.l*1000)
 }
