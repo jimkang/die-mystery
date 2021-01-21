@@ -79,7 +79,7 @@ var as=[ias[0],ias[2]+pi,ias[1],ias[0]+pi,ias[2],ias[1]+pi]
 var cps=as.map(a => cPt(ctr, bR, a))
 var ta=s('#ta')
 var tb=s('#tb')
-var steps=[
+var l=[
 {l:2,b:"I'm going to make a die."},
 {l:2,a:"Making death?!"},
 {l:2,b:"No, a die is an object I read about. Humans used them to pick numbers."},
@@ -95,14 +95,14 @@ var steps=[
 {l:0.3,f(){h(s('#e'),lSVG(ctr,cps[1])+lSVG(ctr,cps[3])+lSVG(ctr,cps[5]))}},
 {l:0.3,f(){h(s('#f'),pSVG(cps))}},
 ]
-function run(step, i){
-if (step.f) step.f()
-t(ta,step.a)
-t(tb,step.b)
-var next=steps[i + 1]
-if(next) setTimeout(()=>run(next,i+1),step.l*1000)
+function run(n, i){
+if(n.f)n.f()
+t(ta,n.a)
+t(tb,n.b)
+var next=l[i + 1]
+if(next) setTimeout(()=>run(next,i+1),n.l*1000)
 }
-run(steps[0], 0)
+run(l[0], 0)
 </script>
 </body>
 </html>
