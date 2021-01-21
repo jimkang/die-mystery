@@ -44,8 +44,10 @@ https://taper.badquart.to/6/title_of_your_work.html
 circle{fill:#aaa}
 #b *{fill:none;stroke:#bbb}
 #e *{stroke:hsla(0,0%,0%,0.1)}
+#ta{color:red}
+#tb{color:blue}
 </style>
-<svg width="90vmin" height="90vmin" viewBox="0 0 100 100">
+<svg width="60vmin" height="60vmin" viewBox="0 0 100 100">
   <g id="a"/>
   <g id="b"/>
   <g id="c"/>
@@ -53,6 +55,8 @@ circle{fill:#aaa}
   <g id="e"/>
   <g id="f"/>
 </svg>
+<div id="ta"></div>
+<div id="tb"></div>
 <script>
 const bR=39+r(10);
 var ctr=[50,50];
@@ -65,9 +69,12 @@ var ias=[
 ];
 var as=[ias[0],ias[2]+pi,ias[1],ias[0]+pi,ias[2],ias[1]+pi]
 var cps=as.map(a => cPt(ctr, bR, a));
+var ta=s('#ta');
+var tb=s('#tb');
 function r(m){return ~~(Math.random() * m);}
 function s(sel){return document.querySelector(sel);}
-function add(e, h){e.innerHTML=e.innerHTML + h;}
+function t(e, s){e.textContent=s;}
+function add(e, h){e.innerHTML=e.innerHTML+h;}
 function cPt(c, r, a){return [c[0]+r*Math.cos(a), c[1]+r*Math.sin(a)];}
 function cSVG(r, c, fill='#444', stroke='none'){
    return `<circle r="${r}" cx="${c[0]}" cy="${c[1]}" fill="${fill}" stroke="${stroke}"/>`;
@@ -80,6 +87,8 @@ function pSVG(ps, stroke='#222'){
 }
 
 var steps=[
+ {l:2,a:"What's going on?"},
+ {l:2,b:"I'm going to make a die."},
  {l: 0, f: (d) =>{add(s('#a'), cSVG(1, ctr));}},
  {l: 0, f: (d) =>{add(s('#b'), cSVG(bR, ctr));}},
  {l: 0.3, f(){add(s('#c'), cSVG(1, cps[0]));}},
@@ -92,18 +101,14 @@ var steps=[
 ];
 
 function run(step, i){
-  var next=steps[i + 1];
-  var runN=() =>{};
-  if (next){
-    runN=() => run(next, i + 1);
- }
+  if (step.f) step.f();
+  if (step.a) t(ta,step.a);
+  if (step.b) t(tb,step.b);
 
-  if (isNaN(step.l)){
-    step.f(runN);
- } else{
-    step.f();
-    setTimeout(runN, step.l * 1000);
- }
+  var next=steps[i + 1];
+  if(next){
+    setTimeout(()=>run(next,i+1),step.l*1000);
+  }
 }
 
 run(steps[0], 0);
