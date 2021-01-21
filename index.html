@@ -43,16 +43,18 @@ https://taper.badquart.to/6/title_of_your_work.html
 <style>
 #a *{stroke:#bbb;fill:#ddd}
 #b *{fill:#999}
-#e *{stroke:hsla(0,0%,0%,0.1)}
 #d *{stroke:#222;fill:none}
 #e *{stroke:#888}
 #ta{color:red}
 #tb{color:blue}
+#d{transform-origin:center;animation:s 1.4s linear infinite}
+#d.p{animation-play-state:paused}
+@keyframes s{from{transform:rotate(0)}to{transform:rotate(359deg)}}
 </style>
 <svg width="60vmin" height="60vmin" viewBox="0 0 100 100">
   <g id="a"/>
   <g id="b"/>
-  <g id="d"><g id="e"/></g>
+  <g id="d" class="p"><g id="e"/></g>
 </svg>
 <div id="ta"></div>
 <div id="tb"></div>
@@ -87,15 +89,23 @@ var l=[
 {l:0,f(){h(s('#a'),c(bR,ctr))},b:"And a circle around it"},
 {l:0,f(){h(s('#b'),c(1,cps[0]))},b:"You put a dot on the circle"},
 {l:0,f(){h(s('#b'),c(1,cps[2])+c(1,cps[4]))},b:"Two more dots"},
-{l:2,f(){h(s('#d'),ln(ctr,cps[0]))},b:"Make lines to the dots"},
-{l:2,f(){h(s('#d'),ln(ctr,cps[2])+ln(ctr,cps[4]))},}, {l:2,a:"Is this a kind of wheel"},
-{l:2,b:"No; stretch the lines out"},
-{l:2,f(){h(s('#e'),ln(ctr,cps[1])+ln(ctr,cps[3])+ln(ctr,cps[5]))},a:"OK"},
-{l:2,f(){h(s('#d'),`<polygon points="${cps.map(p=>p.join(',')).join(' ')}"/>`)},b:"Then connect the things that hit the circle to each other"},
-{l:2,f(){h(s('#d'),ds.map(p=>c(3,p)))},b:"Dots go into the spaces"},
+{l:0,f(){h(s('#d'),ln(ctr,cps[0]))},b:"Make lines to the dots"},
+{l:0,f(){h(s('#d'),ln(ctr,cps[2])+ln(ctr,cps[4]))},}, {l:0,a:"Is this a kind of wheel"},
+{l:0,b:"No; stretch the lines out"},
+{l:0,f(){h(s('#e'),ln(ctr,cps[1])+ln(ctr,cps[3])+ln(ctr,cps[5]))},a:"OK"},
+{l:0,f(){h(s('#d'),`<polygon points="${cps.map(p=>p.join(',')).join(' ')}"/>`)},b:"Then connect the things that hit the circle to each other"},
+{l:0,f(){h(s('#d'),ds.map(p=>c(3,p)))},b:"Dots go into the spaces"},
 {l:0,a:"Aesthetic"},
 {l:0,a:"So how does it pick a number"},
 {l:0,b:"Uhh let's try rotating it"},
+{l:2+r(4),f(){s('#d').classList.remove('p')},b:"They called this 'rolling'"},
+{l:2,f(){s('#d').classList.add('p')},a:"Huh"},
+{l:1,a:"So what number did it pick"},
+{l:1,b:"…"},
+{l:1,b:"I bet you pick space that's most topwise"},
+{l:1,b:"Then count the dots there"},
+{l:1,a:"…I see"},
+{l:1,a:"[END]"},
 ]
 function run(n, i){
 if(n.f)n.f()
