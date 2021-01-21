@@ -60,48 +60,45 @@ https://taper.badquart.to/6/title_of_your_work.html
 <div id="tb"></div>
 <script>
 var r=m=>~~(Math.random()*m),
-s=t=>document.querySelector(t),
+s=t=>document.getElementById(t),
 t=(e,s)=>e.textContent=s,
 h=(e,h)=>e.innerHTML=e.innerHTML+h,
 cPt=(c,r,a)=>[c[0]+r*Math.cos(a), c[1]+r*Math.sin(a)],
 c=(r,c)=>`<circle r="${r}"cx="${c[0]}"cy="${c[1]}"/>`,
 ln=(s,e)=>`<line x1="${s[0]}"y1="${s[1]}"x2="${e[0]}"y2="${e[1]}"/>`,
 bR=39+r(10),
-ctr=[50,50],
+m=[50,50],
 pi=Math.PI,
 tp=2*pi,
-ias=[
-  -tp/32+r(100)/100*tp/16,
-  .3*tp+r(100)/100*tp/16,
-  .64*tp+r(100)/100*tp/16
-],
+ias=[-tp/32+r(100)/100*tp/16,.3*tp+r(100)/100*tp/16,.64*tp+r(100)/100*tp/16],
 as=[ias[0],ias[2]+pi,ias[1],ias[0]+pi,ias[2],ias[1]+pi],
-cps=as.map(a=>cPt(ctr,bR,a)),
-ds=[cPt(ctr,bR/2,as[1]),cPt(ctr,bR/3,as[3]),cPt(ctr,2*bR/3,as[3]),cPt(ctr,bR/4,as[5]),cPt(ctr,bR/2,as[5]),cPt(ctr,3*bR/4,as[5])],
-ta=s('#ta'),
-tb=s('#tb'),
-a=s('#a'),
-b=s('#b'),
+cps=as.map(a=>cPt(m,bR,a)),
+ds=[cPt(m,bR/2,as[1]),cPt(m,bR/3,as[3]),cPt(m,2*bR/3,as[3]),cPt(m,bR/4,as[5]),cPt(m,bR/2,as[5]),cPt(m,3*bR/4,as[5])],
+ta=s('ta'),
+tb=s('tb'),
+a=s('a'),
+b=s('b'),
+d=s('d'),
 l=[
 {b:"I was reading about a 'die' object"},
 {a:"Huh"},
 {b:"People rotated it; when it stopped, it selected number"},
 {a:"How do you make a die"},
-{f(){h(b,c(1,ctr))},b:"Well, looks to me…you draw a point"},
-{f(){h(a,c(bR,ctr))},b:"And a circle around it"},
+{f(){h(b,c(1,m))},b:"Well, looks to me…you draw a point"},
+{f(){h(a,c(bR,m))},b:"And a circle around it"},
 {f(){h(b,c(1,cps[0]))},b:"You put a dot on the circle"},
 {f(){h(b,c(1,cps[2])+c(1,cps[4]))},b:"Two more dots"},
-{f(){h(s('#d'),ln(ctr,cps[0]))},b:"Make lines to the dots"},
-{f(){h(s('#d'),ln(ctr,cps[2])+ln(ctr,cps[4]))},}, {a:"Is this a kind of wheel"},
+{f(){h(d,ln(m,cps[0]))},b:"Make lines to the dots"},
+{f(){h(d,ln(m,cps[2])+ln(m,cps[4]))},}, {a:"Is this a kind of wheel"},
 {b:"No; stretch the lines out"},
-{f(){h(s('#e'),ln(ctr,cps[1])+ln(ctr,cps[3])+ln(ctr,cps[5]))},a:"OK"},
-{f(){h(s('#d'),`<polygon points="${cps.map(p=>p.join(',')).join(' ')}"/>`)},b:"Then connect the things that hit the circle to each other"},
-{f(){h(s('#d'),ds.map(p=>c(3,p)))},b:"Dots go into the spaces"},
+{f(){h(s('e'),ln(m,cps[1])+ln(m,cps[3])+ln(m,cps[5]))},a:"OK"},
+{f(){h(d,`<polygon points="${cps.map(p=>p.join(',')).join(' ')}"/>`)},b:"Then connect the things that hit the circle to each other"},
+{f(){h(d,ds.map(p=>c(3,p)))},b:"Dots go into the spaces"},
 {a:"Aesthetic"},
 {a:"So how does it pick a number"},
 {b:"Uhh let's try rotating it"},
-{l:2+r(4),f(){s('#d').classList.remove('p')},b:"They called this 'rolling'"},
-{f(){s('#d').classList.add('p')},a:"Huh"},
+{l:2+r(4),f(){d.classList.remove('p')},b:"They called this 'rolling'"},
+{f(){d.classList.add('p')},a:"Huh"},
 {a:"So what number did it pick"},
 {b:"…"},
 {b:"I bet you pick space that's most topwise"},
@@ -114,7 +111,7 @@ if(n.f)n.f()
 t(ta,n.a)
 t(tb,n.b)
 var n1=l[i + 1]
-if(n1)setTimeout(()=>run(n1,i+1),(n.l?n.l:3)*100)
+if(n1)setTimeout(()=>run(n1,i+1),(n.l?n.l:4)*100)
 }
 run(l[0], 0)
 </script>
