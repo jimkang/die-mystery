@@ -80,28 +80,29 @@ a=s('a'),
 b=s('b'),
 d=s('d'),
 l=[
-{b:"I was reading about a 'die' object"},
+{b:"I read about a 'die' object"},
 {a:"Huh"},
-{b:"People rotated it; when it stopped, it selected number"},
-{a:"How do you make a die"},
+{b:"People rotated it; when it stopped, it picked a number"},
+{a:"How do you make one"},
 {f(){h(b,c(1,m))},b:"Well, looks to me…you draw a point"},
 {f(){h(a,c(bR,m))},b:"And a circle around it"},
 {f(){h(b,c(1,cps[0]))},b:"You put a dot on the circle"},
 {f(){h(b,c(1,cps[2])+c(1,cps[4]))},b:"Two more dots"},
-{f(){h(d,ln(m,cps[0]))},b:"Make lines to the dots"},
-{f(){h(d,ln(m,cps[2])+ln(m,cps[4]))},}, {a:"Is this a kind of wheel"},
-{b:"No; stretch the lines out"},
-{f(){h(s('e'),ln(m,cps[1])+ln(m,cps[3])+ln(m,cps[5]))},a:"OK"},
-{f(){h(d,`<polygon points="${cps.map(p=>p.join(',')).join(' ')}"/>`)},b:"Then connect the things that hit the circle to each other"},
-{f(){h(d,ds.map(p=>c(3,p)))},b:"Dots go into the spaces"},
+{f(){h(d,ln(m,cps[0]))},b:"Add lines to the dots"},
+{f(){h(d,ln(m,cps[2])+ln(m,cps[4]))}},
+{f(){h(s('e'),ln(m,cps[1])+ln(m,cps[3])+ln(m,cps[5]))},b:"Stretch the lines"},
+{a:"So it's a wheel"},
+{b:"No"},
+{l:8,f(){h(d,`<polygon points="${cps.map(p=>p.join(',')).join(' ')}"/>`)},b:"You connect the things that hit the circle to each other"},
+{f(){h(d,ds.map(p=>c(3,p)))},b:"Dots go in the spaces"},
 {a:"Aesthetic"},
 {a:"So how does it pick a number"},
 {b:"Uhh let's try rotating it"},
 {l:2+r(4),f(){d.classList.remove('p')},b:"They called this 'rolling'"},
-{f(){d.classList.add('p')},a:"Huh"},
-{a:"So what number did it pick"},
+{f(){d.classList.add('p')},a:"Huh",b:"It worked!"},
+{a:"So what did it pick"},
 {b:"…"},
-{b:"I bet you pick space that's most topwise"},
+{b:"I bet you pick the space that's most topwise"},
 {b:"Then count the dots there"},
 {a:"…I see"},
 {a:"[END]"},
@@ -111,7 +112,7 @@ if(n.f)n.f()
 t(ta,n.a)
 t(tb,n.b)
 var n1=l[i + 1]
-if(n1)setTimeout(()=>run(n1,i+1),(n.l?n.l:4)*100)
+if(n1)setTimeout(()=>run(n1,i+1),(n.l?n.l:4)*1000)
 }
 run(l[0], 0)
 </script>
