@@ -80,20 +80,21 @@ var cps=as.map(a => cPt(ctr, bR, a))
 var ta=s('#ta')
 var tb=s('#tb')
 var l=[
-{l:2,b:"I'm going to make a die."},
-{l:2,a:"Making death?!"},
-{l:2,b:"No, a die is an object I read about. Humans used them to pick numbers."},
+{l:2,b:"Let's make a die"},
+{l:2,a:"The act of ending life"},
+{l:2,b:"No, a die is an object I read about"},
 {l:2,a:"Huh"},
-{l:2,b:"The object rotated, then it stopped. The stopping position indicated the selection."},
-{l:0,f(){h(s('#a'),cSVG(1,ctr))}},
-{l:0,f(){h(s('#b'),cSVG(bR,ctr))}},
-{l:0.3,f(){h(s('#c'),cSVG(1,cps[0]))}},
-{l:0.3,f(){h(s('#c'),cSVG(1,cps[2]))}},
-{l:0.3,f(){h(s('#c'),cSVG(1,cps[4]))}},
-{l:2,f(){h(s('#d'),lSVG(ctr,cps[0]))}},
-{l:0.3,f(){h(s('#d'),lSVG(ctr,cps[2])+lSVG(ctr,cps[4]))}},
-{l:0.3,f(){h(s('#e'),lSVG(ctr,cps[1])+lSVG(ctr,cps[3])+lSVG(ctr,cps[5]))}},
-{l:0.3,f(){h(s('#f'),pSVG(cps))}},
+{l:2,b:"The object rotated then stopped; final position indicated a selected number"},
+{l:2,a:"How do you make a die"},
+{l:1,f(){h(s('#a'),cSVG(1,ctr))},b:"I think you make a point"},
+{l:1,f(){h(s('#b'),cSVG(bR,ctr))},b:"And a circle around it"},
+{l:3,f(){h(s('#c'),cSVG(1,cps[0]))},b:"You put a dot on the circle"},
+{l:3,f(){h(s('#c'),cSVG(1,cps[2])+cSVG(1,cps[4]))},b:"Two more dots"},
+{l:2,f(){h(s('#d'),lSVG(ctr,cps[0]))},b:"Make lines to the dots"},
+{l:3,f(){h(s('#d'),lSVG(ctr,cps[2])+lSVG(ctr,cps[4]))},}, {l:2,a:"Is this a kind of wheel"},
+{l:3,b:"No; stretch the lines out"},
+{l:3,f(){h(s('#e'),lSVG(ctr,cps[1])+lSVG(ctr,cps[3])+lSVG(ctr,cps[5]))},a:"OK"},
+{l:3,f(){h(s('#f'),pSVG(cps))},b:"Then connect the dots to each other"},
 ]
 function run(n, i){
 if(n.f)n.f()
