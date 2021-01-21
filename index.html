@@ -41,14 +41,13 @@ https://taper.badquart.to/6/title_of_your_work.html
 </header> <!-- The poem that follows, up to </body>, is at most 2kb -->
 
 <style>
-#a *{stroke:#bbb;fill:#ddd}
-#b *{fill:#999}
-#d *{stroke:#222;fill:none}
-#e *{stroke:#888}
+#a{stroke:#bbb;fill:#ddd}
+#b{fill:#999}
+#d{stroke:#222;fill:none;transform-origin:center;animation:s 1.4s linear 99}
+#d.p{animation-play-state:paused}
+#e{stroke:#888}
 #ta{color:red}
 #tb{color:blue}
-#d{transform-origin:center;animation:s 1.4s linear 99}
-#d.p{animation-play-state:paused}
 @keyframes s{from{transform:rotate(0)}to{transform:rotate(359deg)}}
 </style>
 <svg width="60vmin" height="60vmin" viewBox="0 0 100 100">
