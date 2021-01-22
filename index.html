@@ -106,14 +106,17 @@ l=[
 {a:"…I see"},
 {a:"[END]"},
 ],
-run=(n, i)=>{
+N=i=>i+1
+run=(i)=>{
+n=l[i]
 if(n.f)n.f()
 t(ta,n.a)
 t(tb,n.b)
-var n1=l[i + 1]
-if(n1)setTimeout(()=>run(n1,i+1),(n.l?n.l:4)*1000)
+if(i>24)N=i=>r(26)
+i=N(i)
+setTimeout(run,(n.l?n.l:4)*100,i)
 }
-run(l[0], 0)
+run(0)
 </script>
 </body>
 </html>
