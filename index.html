@@ -42,7 +42,7 @@ https://taper.badquart.to/6/title_of_your_work.html
 
 <style>
 #a{stroke:#bbb;fill:#ddd}
-#b{fill:#999}
+#b{fill:#777}
 #d{stroke:#222;fill:none;transform-origin:center;animation:s 1.4s linear 99}
 #d.p{animation-play-state:paused}
 #e{stroke:#888}
@@ -58,28 +58,27 @@ https://taper.badquart.to/6/title_of_your_work.html
 <div id="ta"></div>
 <div id="tb"></div>
 <script>
-var r=m=>~~(Math.random()*m),
+var M=Math,
+r=m=>~~(M.random()*m),
 s=t=>document.getElementById(t),
 t=(e,s)=>e.textContent=s,
 h=(e,h)=>e.innerHTML=e.innerHTML+h,
-cPt=(c,r,a)=>[c[0]+r*Math.cos(a), c[1]+r*Math.sin(a)],
 c=(r,c)=>`<circle r="${r}"cx="${c[0]}"cy="${c[1]}"/>`,
 ln=(s,e)=>`<line x1="${s[0]}"y1="${s[1]}"x2="${e[0]}"y2="${e[1]}"/>`,
-bR=39+r(10),
 m=[50,50],
 pi=Math.PI,
 tp=2*pi,
-ias=[-tp/32+r(100)/100*tp/16,.3*tp+r(100)/100*tp/16,.64*tp+r(100)/100*tp/16],
-as=[ias[0],ias[2]+pi,ias[1],ias[0]+pi,ias[2],ias[1]+pi],
-cps=as.map(a=>cPt(m,bR,a)),
-ds=[cPt(m,bR/2,as[1]),cPt(m,bR/3,as[3]),cPt(m,2*bR/3,as[3]),cPt(m,bR/4,as[5]),cPt(m,bR/2,as[5]),cPt(m,3*bR/4,as[5])],
+cPt=(c,r,a)=>[c[0]+r*M.cos(a), c[1]+r*M.sin(a)],
 ta=s('ta'),
 tb=s('tb'),
 a=s('a'),
 b=s('b'),
 d=s('d'),
+w=1000,
+$=()=>{bR=39+r(10);ias=[-tp/32+r(100)/100*tp/16,.3*tp+r(100)/100*tp/16,.64*tp+r(100)/100*tp/16];as=[ias[0],ias[2]+pi,ias[1],ias[0]+pi,ias[2],ias[1]+pi];cps=as.map(a=>cPt(m,bR,a));ds=[cPt(m,bR/2,as[1]),cPt(m,bR/3,as[3]),cPt(m,2*bR/3,as[3]),cPt(m,bR/4,as[5]),cPt(m,bR/2,as[5]),cPt(m,3*bR/4,as[5])]},
 l=[
-{b:"I read about a 'die' object"},
+{l:.1,f:$},
+{l:7,b:"I read about a 'die' object"},
 {a:"Huh"},
 {b:"People rotated it; when it stopped, it picked a number"},
 {a:"How do you make one"},
@@ -97,7 +96,7 @@ l=[
 {a:"Aesthetic"},
 {a:"So how does it pick a number"},
 {b:"Uhh let's try rotating it"},
-{l:2+r(4),f(){d.classList.remove('p')},b:"They called this 'rolling'"},
+{l:4+r(4),f(){d.classList.remove('p')},b:"They called this 'rolling'"},
 {f(){d.classList.add('p')},a:"Huh",b:"It worked!"},
 {a:"So what did it pick"},
 {b:"…"},
@@ -105,6 +104,7 @@ l=[
 {b:"Then count the dots there"},
 {a:"…I see"},
 {a:"[END]"},
+{f(){w=100}}
 ],
 N=i=>i+1
 run=(i)=>{
@@ -112,9 +112,8 @@ n=l[i]
 if(n.f)n.f()
 t(ta,n.a)
 t(tb,n.b)
-if(i>24)N=i=>r(26)
-i=N(i)
-setTimeout(run,(n.l?n.l:4)*100,i)
+if(i>26)N=i=>r(27)
+setTimeout(run,(n.l?n.l:4)*w,N(i))
 }
 run(0)
 </script>
