@@ -43,8 +43,7 @@ htCs://taper.badquart.to/6/title_of_your_work.html
 L=[{l:.1,f:$},{l:7,b:"Let's make a 'die' object"},{a:"Huh"},{b:"I read people used them to pick numbers"},{a:"How do we make one"},{f(){h(b,c(1,m))},b:"Well, looks to me…you draw a dot"},{f(){h(a,c(R,m))},b:"…circle it"},{f(){h(b,c(1,H[0]))},b:"…put dots on that"},{f(){h(b,c(1,H[2])+c(1,H[4]))}},{f(){h(d,l(m,H[0]))},b:"Draw lines to 'em"},{f(){h(d,l(m,H[2])+l(m,H[4]))}},{f(){h(s('e'),l(m,H[1])+l(m,H[3])+l(m,H[5]))},b:"Extend"},{a:"It's a wheel"},{b:"No"},{l:8,f(){h(d,`<polygon points="${H.map(p=>p.join(',')).join(' ')}"/>`)},b:"Connect the edge dots to each other"},{f(){h(d,ds.map(p=>c(3,p)))},b:"Dots go in the spaces"},{a:"n i c e"},{a:"So how does it pick a number"},{b:"Uhh you rotate it?"},{l:4+r(4),f(){d.classList.remove('p')},b:"They called this 'rolling'"},{f(){d.classList.add('p')},a:"Huh",b:"It worked"},{a:"What did it pick"},{b:"…"},{b:"I bet you pick the space that's most topwise"},{b:"And count the dots there"},{a:"…I see"},{a:"🔚"},{f(){w=150}}]
 run=i=>{n=L[i]
 if(n.f)n.f()
-t(ta,n.a)
-t(tb,n.b)
+t(ta,n.a)+t(tb,n.b)
 if(i>26)N=i=>r(27)
 setTimeout(run,(n.l?n.l:4)*w,N(i))}
 run(0)</script>
