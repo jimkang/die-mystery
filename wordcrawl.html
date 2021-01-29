@@ -32,27 +32,27 @@ The way dice work may not be as apparent as we think.
 	<h1>
 		<a href="index.html">Taper #6 :
 		A Throw of the Dice</a> : Spring 2021 <br>
-		<a href="template.html">“Reconstructing the 'die'”</a> by
+		<a href="template.html">“Odes to the die”</a> by
 		<a href="about.html#AUTHOR">Jim Kang</a> :
 		<a href="prev.html">&lt;&lt;</a> &mdash;
 		<a href="next.html">&gt;&gt;</a>
 	</h1>
 </header> <!-- The poem that follows, up to </body>, is at most 2kb -->
 <style>
-table {padding:1em;background-color:#000;color:#eee}
-#p{width:50vw}
-td{text-align:center}
-.up{font-size:2em}
-td:first-child.up{padding-left:4em}
-td:last-child.up{padding-right:4em}
+div{padding:1em;background-color:#100}
+#U,#d{font-size:2em}
+#p{text-align:center}
+#s{border-radius:50%;background-color:#ff4;display:flex;flex-direction:column;align-items:center}
 </style>
-<table>
-<tr><td id="g0"/><td id="p" rowspan="4"/><td id="g4"/></tr>
-<tr><td id="g1"/><td id="g5"/></tr>
-<tr><td id="g2"/><td id="g6"/></tr>
-<tr><td id="g3"/><td id="g7"/></tr>
-</table>
-<button onclick="G();U(r(8));K()">Go!</button>
+<div>
+<span id="Q"></span>
+<button onclick="G();N()">Go!</button>
+<div id="s">
+<p id="U"></p>
+<p id="p"></p>
+<p id="d">🎲</p>
+</div>
+</div>
 <script>
 var w=['the',
 'be',
@@ -154,36 +154,21 @@ var w=['the',
 'down',
 'own',
 'just'],
-Q=s=>document.querySelectorAll(s),
-g=['🎃','🩸','🐒','🐕','🐎','🐿️','🦇','🦅','🦜' ,'🦩','🐳','🐙','🌸','🦀','🌝','🍖','🧊','🤺','🤾', '🤸','🏋️','🎲','🗿','🌠','🪐','🛸','💣','🎈','🗡️', '🗜️','⚰️','💔', '❤️', '🌀', '🔊','📢','⚠️','📳','〰️','👻','🧠','💃','🕺','🕴️'],
+I=s=>document.getElementById(s),
+t=(d,w)=>d.innerHTML=w,
+h=['🎃','🩸','🐒','🐕','🐎','🐿️','🦇','🦅','🦜' ,'🦩','🐳','🐙','🌸','🦀','🌝','🍖','🧊','🤺','🤾', '🤸','🏋️','🗿','🌠','🪐','🛸','💣','🎈','🗡️', '🗜️','⚰️','💔', '❤️', '🌀', '🔊','📢','⚠️','📳','👻','🧠','💃','🕺','🕴️'],
 r=n=>~~(Math.random()*n),
 R=n=>{y=[];for(i=0;i<n;++i){y[i]=i};return y},
 p=()=>w[r(w.length)],
-l=[],
 m=0,
-T=[[],[]],
-n=A=>{if(m<l.length){A.push(l[m]);++m}},
-cA=Q('td:first-child'),
-cB=Q('td:last-child'),
-f=(A,c)=>A.forEach((w,i)=>c[i].textContent=w),
-F=i=>{f(T[0],cA);f(T[1],cB)},
-u=0,
-U=i=>{u&&u.classList.remove('up');u=Q('#g'+i)[0];u.classList.add('up')},
+g=[],
+F=i=>{t(I('Q'),g.slice(m+1,m+6).reverse().join(''));t(I('U'),g[m]+'🎙️')}
 L=()=>R(1+r(5)).map(p).join(' '),
-P=Q('#p')[0],
+P=I('p'),
 G=()=>P.innerHTML=R(2+r(4)).map(L).join('<br>'),
-k=(i,t)=>{T[t][i]='';F();setTimeout(j=>{T[t].splice(i,1);n(T[t]);F()},500)}
-K=i=>R(r(4)).map(()=>k(r(4),r(2)))
-for(var i=0,q;i<g.length;++i){q=r(i+1);if(r!=i){l[i]=l[q]}l[q]=g[i]}
-for(var i=0;i<4;++i){n(T[0]);n(T[1])}
+N=i=>{F();++m}
+for(var i=0,q;i<h.length;++i){q=r(i+1);if(r!=i){g[i]=g[q]}g[q]=h[i]}
 F()
-console.log(R(7).map(L).join('<br>'))
-//t.innerHTML= `${p()} ${p()} ${p()} ${p()} ${p()} ${p()}<br>
-//${p()} ${p()} ${p()} ${p()} ${p()} ${p()}<br>
-//${p()} ${p()} ${p()} ${p()} ${p()} ${p()}<br>
-//${p()} ${p()} ${p()} ${p()} ${p()} ${p()}
-//`;
-// Poetry slam! FF RPG battle layout
 </script>
 </body>
 </html>
