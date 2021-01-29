@@ -38,9 +38,20 @@ The way dice work may not be as apparent as we think.
 		<a href="next.html">&gt;&gt;</a>
 	</h1>
 </header> <!-- The poem that follows, up to </body>, is at most 2kb -->
-<div style="background-color:#000;color:#eee">
-
-</div>
+<style>
+table {padding:1em;background-color:#000;color:#eee}
+#p{width:50vw}
+td{text-align:center}
+td:first-child.up{padding-left:4em}
+td:last-child.up{padding-right:4em}
+</style>
+<table>
+<tr><td id="g0"/><td id="p" rowspan="4"/><td id="g4"/></tr>
+<tr><td id="g1"/><td id="g5"/></tr>
+<tr><td id="g2"/><td id="g6"/></tr>
+<tr><td id="g3"/><td id="g7"/></tr>
+</table>
+<button onclick="G();U(r(8))">Go!</button>
 <script>
 var w=['the',
 'be',
@@ -141,10 +152,28 @@ var w=['the',
 'people',
 'down',
 'own',
-'just']
-var g=['🎃','🩸','🐒','🐕','🐎','🐿️','🦇','🦅','🦜' ,'🦩','🐳','🐙','🌸','🦀','🌝','🍖','🧊','🤺','🤾', '🤸','🏋️','🎲','🗿','🌠','🪐','🛸','💣','🎈','🗡️', '🗜️','⚰️','💔', '❤️', '🌀', '🔊','📢','⚠️','📳','〰️','👻','🧠','💃','🕺','🕴️'];
-var t = document.querySelector('div');
-var p = ()=>w[~~(Math.random()*w.length)];
+'just'],
+Q=s=>document.querySelectorAll(s),
+g=['🎃','🩸','🐒','🐕','🐎','🐿️','🦇','🦅','🦜' ,'🦩','🐳','🐙','🌸','🦀','🌝','🍖','🧊','🤺','🤾', '🤸','🏋️','🎲','🗿','🌠','🪐','🛸','💣','🎈','🗡️', '🗜️','⚰️','💔', '❤️', '🌀', '🔊','📢','⚠️','📳','〰️','👻','🧠','💃','🕺','🕴️'],
+r=n=>~~(Math.random()*n),
+R=n=>{y=[];for(i=0;i<n;++i){y[i]=i};return y},
+p=()=>w[r(w.length)],
+l=[],
+m=0,
+T=[[],[]],
+n=A=>{if(m<l.length){A.push(l[m]);++m}},
+cA=Q('td:first-child'),
+cB=Q('td:last-child'),
+f=(A,c)=>A.forEach((w,i)=>c[i].textContent=w),
+u=0,
+U=i=>{u&&u.classList.remove('up');u=Q('#g'+i)[0];u.classList.add('up')},
+L=()=>R(1+r(5)).map(p).join(' '),
+P=Q('#p')[0],
+G=()=>P.innerHTML=R(2+r(4)).map(L).join('<br>')
+for(var i=0,q;i<g.length;++i){q=r(i+1);if(r!=i){l[i]=l[q]}l[q]=g[i]}
+for(var i=0;i<4;++i){n(T[0]);n(T[1])}
+f(T[0],cA);f(T[1],cB)
+console.log(R(7).map(L).join('<br>'))
 //t.innerHTML= `${p()} ${p()} ${p()} ${p()} ${p()} ${p()}<br>
 //${p()} ${p()} ${p()} ${p()} ${p()} ${p()}<br>
 //${p()} ${p()} ${p()} ${p()} ${p()} ${p()}<br>
