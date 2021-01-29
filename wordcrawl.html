@@ -42,6 +42,7 @@ The way dice work may not be as apparent as we think.
 table {padding:1em;background-color:#000;color:#eee}
 #p{width:50vw}
 td{text-align:center}
+.up{font-size:2em}
 td:first-child.up{padding-left:4em}
 td:last-child.up{padding-right:4em}
 </style>
@@ -51,7 +52,7 @@ td:last-child.up{padding-right:4em}
 <tr><td id="g2"/><td id="g6"/></tr>
 <tr><td id="g3"/><td id="g7"/></tr>
 </table>
-<button onclick="G();U(r(8))">Go!</button>
+<button onclick="G();U(r(8));K()">Go!</button>
 <script>
 var w=['the',
 'be',
@@ -165,14 +166,17 @@ n=A=>{if(m<l.length){A.push(l[m]);++m}},
 cA=Q('td:first-child'),
 cB=Q('td:last-child'),
 f=(A,c)=>A.forEach((w,i)=>c[i].textContent=w),
+F=i=>{f(T[0],cA);f(T[1],cB)},
 u=0,
 U=i=>{u&&u.classList.remove('up');u=Q('#g'+i)[0];u.classList.add('up')},
 L=()=>R(1+r(5)).map(p).join(' '),
 P=Q('#p')[0],
-G=()=>P.innerHTML=R(2+r(4)).map(L).join('<br>')
+G=()=>P.innerHTML=R(2+r(4)).map(L).join('<br>'),
+k=(i,t)=>{T[t][i]='';F();setTimeout(j=>{T[t].splice(i,1);n(T[t]);F()},500)}
+K=i=>R(r(4)).map(()=>k(r(4),r(2)))
 for(var i=0,q;i<g.length;++i){q=r(i+1);if(r!=i){l[i]=l[q]}l[q]=g[i]}
 for(var i=0;i<4;++i){n(T[0]);n(T[1])}
-f(T[0],cA);f(T[1],cB)
+F()
 console.log(R(7).map(L).join('<br>'))
 //t.innerHTML= `${p()} ${p()} ${p()} ${p()} ${p()} ${p()}<br>
 //${p()} ${p()} ${p()} ${p()} ${p()} ${p()}<br>
