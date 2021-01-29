@@ -162,13 +162,14 @@ R=n=>{y=[];for(i=0;i<n;++i){y[i]=i};return y},
 p=()=>w[r(w.length)],
 m=0,
 g=[],
-F=i=>{t(I('Q'),g.slice(m+1,m+6).reverse().join(''));t(I('U'),g[m]+'🎙️')}
+Q=i=>t(I('Q'),g.slice(i,i+5).reverse().join('')),
+S=j=>{t(I('U'),j+'🎙️')}
 L=()=>R(1+r(5)).map(p).join(' '),
 P=I('p'),
 G=()=>P.innerHTML=R(2+r(4)).map(L).join('<br>'),
-N=i=>{F();++m}
+N=i=>{S(g[m]);++m;Q(m)}
 for(var i=0,q;i<h.length;++i){q=r(i+1);if(r!=i){g[i]=g[q]}g[q]=h[i]}
-F()
+Q(m);S('')
 </script>
 </body>
 </html>
