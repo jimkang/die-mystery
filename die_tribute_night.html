@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<title>TITLE (Taper #6)</title>
 
-<!-- “Reconstructing the 'die'” Copyright (C) 2021 Jim Kang
+<!-- “A Night of Tribute to the Die” Copyright (C) 2021 Jim Kang
 
 Copying and distribution of this file, with or without modification,
 are permitted in any medium without royalty provided the copyright
@@ -13,9 +13,9 @@ without any warranty.
 
 This is from Taper #6: A Throw of the Dice, Spring 2021:
 
-https://taper.badquart.to/6/title_of_your_work.html
+https://taper.badquart.to/6/die_tribute_night.html
 
-The way dice work may not be as apparent as we think.
+Emoji from all over have come to honor the die with its favorite kind of poetry: The randomly generated kind!
 -->
 
 	<style>
@@ -153,7 +153,22 @@ var w=['the',
 'people',
 'down',
 'own',
-'just'],
+'just',
+'because',
+'good',
+'each',
+'those',
+'feel',
+'seem',
+'how',
+'high',
+'too',
+'place',
+'little',
+'world',
+'very',
+'still',
+'become'],
 I=s=>document.getElementById(s),
 t=(d,w)=>d.innerHTML=w,
 h=['🎃','🩸','🐒','🐕','🐎','🐿️','🦇','🦅','🦜' ,'🦩','🐳','🐙','🌸','🦀','🌝','🍖','🧊','🤺','🤾', '🤸','🏋️','🗿','🌠','🪐','🛸','💣','🎈','🗡️', '🗜️','⚰️','💔', '❤️', '🌀', '🔊','📢','⚠️','📳','👻','🧠','💃','🕺','🕴️'],
@@ -167,7 +182,7 @@ S=j=>{t(I('U'),j+'🎙️')}
 L=()=>R(1+r(5)).map(p).join(' '),
 P=I('p'),
 G=()=>P.innerHTML=R(2+r(4)).map(L).join('<br>'),
-N=i=>{S(g[m]);++m;Q(m)}
+N=i=>{if(g[m]){S(g[m])}else{S('🎲');t(I('d'),'')}++m;Q(m)}
 for(var i=0,q;i<h.length;++i){q=r(i+1);if(r!=i){g[i]=g[q]}g[q]=h[i]}
 Q(m);S('')
 </script>
